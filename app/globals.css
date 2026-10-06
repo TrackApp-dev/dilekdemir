@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---------------------------------------------------------------------------
+   Tasarım sistemi — Dilek Demir
+   Sakinlik, güven ve psikolojik iyi oluş hissi veren açık tonlu palet.
+   Dark mode bilinçli olarak devre dışıdır (aydınlık ve ferah tasarım tercihi).
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* Marka paleti */
+  --color-sage-50: #f8faf9;
+  --color-sage-100: #edf6f1;
+  --color-sage-200: #ddefe6;
+  --color-sage-300: #b8dbc9;
+  --color-sage-400: #7faf9a;
+  --color-sage-500: #6b9d87;
+  --color-sage-600: #5b7d6d;
+  --color-sage-700: #4a6759;
+  --color-sage-800: #364c42;
+  --color-sage-900: #24332c;
+
+  /* Metin */
+  --color-ink: #1f2937;
+  --color-ink-soft: #4b5563;
+  --color-ink-muted: #6b7280;
+
+  /* Sıcak vurgu — kartlarda ölçülü kullanılır */
+  --color-sand-100: #faf7f2;
+  --color-sand-200: #f0e9dd;
+  --color-sand-500: #c9a87c;
+
+  /* Tipografi */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Yarıçap */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2.25rem;
+
+  /* Gölge — yumuşak ve düşük kontrastlı */
+  --shadow-soft: 0 1px 2px rgb(31 41 55 / 0.04), 0 8px 24px -12px rgb(31 41 55 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(31 41 55 / 0.04), 0 18px 40px -18px rgb(31 41 55 / 0.16);
+  --shadow-ring: 0 0 0 1px rgb(127 175 154 / 0.18);
+
+  /* Geçiş */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Konteyner */
+  --container-content: 76rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* Sticky header yüksekliği kadar hash-scroll payı */
+    scroll-padding-top: 6.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sage-50);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  /* Klavye kullanıcıları için net ve tutarlı odak halkası */
+  :focus-visible {
+    outline: 2px solid var(--color-sage-600);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+
+  ::selection {
+    background-color: var(--color-sage-200);
+    color: var(--color-sage-900);
+  }
+
+  /* Hareket azaltma tercihine tam uyum */
+  @media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Ana içerik konteyneri */
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: var(--container-content);
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .container-page { padding-inline: 2rem; } }
+  @media (min-width: 1024px) { .container-page { padding-inline: 2.5rem; } }
+
+  /* Yumuşak dekoratif zemin lekesi */
+  .bg-mesh {
+    background-image:
+      radial-gradient(60rem 32rem at 12% -8%, rgb(221 239 230 / 0.85), transparent 60%),
+      radial-gradient(48rem 28rem at 92% 6%, rgb(221 239 230 / 0.55), transparent 62%);
+  }
+
+  .text-balance { text-wrap: balance; }
+
+  /*
+   * Ekranın üst kısmındaki içerik için CSS tabanlı giriş animasyonu.
+   * JavaScript beklenmeden ilk boyamada çalıştığı için LCP'yi geciktirmez.
+   * (Aşağıdaki bölümlerde JS tabanlı `Reveal` kullanılır.)
+   */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .animate-rise {
+    animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+/* Blog gövdesi tipografisi */
+.prose-article {
+  --tw-prose-body: var(--color-ink-soft);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-sage-700);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-bullets: var(--color-sage-400);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-sage-300);
+  --tw-prose-counters: var(--color-ink-muted);
+  --tw-prose-hr: var(--color-sage-200);
+}

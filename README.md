@@ -132,13 +132,45 @@ Bunu koruyan başlıca kararlar:
 - `prefers-reduced-motion` tüm animasyonları devre dışı bırakır
 - JavaScript kapalıyken içeriğin görünür kalması için `<noscript>` yedeği vardır
 
-## Yayınlama (Vercel önerilir)
+## Yayınlama (Cloudflare)
 
-1. Depoyu Vercel'e bağlayın; ek yapılandırma gerekmez.
-2. Alan adını bağlayın ve `lib/site.ts` içindeki `url` alanını güncelleyin.
-3. İkinci alan adını (`dilekdemir.net`) ana alan adına **301** ile yönlendirin;
+Site **statik olarak dışa aktarılır** (`output: "export"`): `next build` komutu
+`out/` klasörüne saf HTML/CSS/JS yazar ve Cloudflare bunu doğrudan servis eder.
+Sunucu çalışma zamanı (OpenNext/Workers) gerekmez.
+
+Depodaki [`wrangler.jsonc`](wrangler.jsonc) bu kurulumu tanımlar; Worker adı
+Cloudflare'deki proje adıyla **birebir aynı olmalıdır**. Cloudflare projesinin
+ayarları:
+
+| Ayar | Değer |
+| --- | --- |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+
+Yerelde Cloudflare'in gerçek davranışını (temiz URL'ler, 404 sayfası, `_headers`)
+denemek için:
+
+```bash
+npm run build
+npx wrangler dev
+```
+
+Alan adı bağlandığında yapılacaklar:
+
+1. Cloudflare projesinde **Custom domains** sekmesinden alan adını ekleyin
+   (HTTPS otomatik gelir).
+2. [`lib/site.ts`](lib/site.ts) içindeki `url` alanını canlı adrese çevirin —
+   metadata, sitemap ve JSON-LD bu değeri kullanır.
+3. İkinci alan adını (`dilekdemir.net`) ana adrese **301** ile yönlendirin;
    ikisinin de indekslenmesi SEO'yu böler.
 4. Google Search Console'a `sitemap.xml` adresini gönderin.
+
+### Statik dışa aktarmanın getirdiği iki kısıt
+
+- **Görsel optimizasyonu kapalıdır** (`images.unoptimized`). Danışman fotoğrafı
+  eklenirken görsel, yüklenmeden önce uygun boyuta getirilmelidir.
+- Sunucu tarafı özellik (form gönderimi, üyelik, API) gerekirse statik dışa
+  aktarma yetmez; o noktada `@opennextjs/cloudflare` adaptörüne geçilir.
 
 ## Dizin yapısı
 

@@ -4,6 +4,9 @@ import { blog } from "@/lib/content/blog";
 import { services } from "@/lib/content/services";
 import { absoluteUrl } from "@/lib/seo";
 
+/** Statik dışa aktarmada derleme anında bir kez üretilir. */
+export const dynamic = "force-static";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Cloudflare'deki proje (Worker) adı ile birebir aynı olmalıdır.
+  "name": "dilekdemir",
+  "compatibility_date": "2026-10-06",
+
+  /**
+   * Site tamamen statik olduğu için sunucu betiği ("main") yoktur:
+   * `next build` çıktısı olan `out/` klasörü doğrudan servis edilir.
+   * Bu yapılandırma dosyasının depoda bulunması, Wrangler'ın derleme
+   * ortamında OpenNext kurulumunu kendiliğinden başlatmasını da engeller.
+   */
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

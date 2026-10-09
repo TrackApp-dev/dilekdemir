@@ -24,12 +24,12 @@ npm run dev
 Tüm kimlik ve iletişim bilgileri **tek dosyadan** yönetilir:
 [`lib/site.ts`](lib/site.ts). İçindeki `// TODO` işaretli alanları güncelleyin:
 
-- `contact.phone` / `phoneHref` / `whatsapp` / `email`
-- `contact.address`, `contact.geo`, `contact.mapsEmbedUrl`, `contact.mapsLink`
-- `social.instagram`, `social.linkedin`
-- `calendly.url` — gerçek Calendly bağlantısı
-  (`calendly.enabled: false` yapılırsa randevu bölümü otomatik olarak
-  telefon/e-posta kartına düşer)
+- `social.instagram` — henüz boş; boş bırakıldığında ilgili ikon gizlenir
+- `contact.geo` ve `contact.mapsEmbedUrl` — şu an Gebze merkezli genel konum
+- `contact.phone` / `phoneHref` — **şu an boş.** Boş kaldığı sürece telefonla
+  ilgili tüm arayüz öğeleri (header bağlantısı, footer satırı, mobil çubuk
+  butonu, iletişim kartı) gizlenir ve yerlerini e-posta alır; numara eklendiğinde
+  hepsi kendiliğinden görünür olur.
 - `url` — canlı alan adı (metadata, sitemap ve JSON-LD bu değeri kullanır)
 
 Ayrıca:
@@ -127,8 +127,7 @@ Bunu koruyan başlıca kararlar:
 - Ekranın üst kısmındaki giriş animasyonu CSS ile yapılır; başlık ve giriş
   paragrafı hiç animasyonlu değildir (LCP'yi geciktirmemek için)
 - Framer Motion `LazyMotion` + `m` bileşenleriyle tembel yüklenir
-- Calendly betiği yalnızca widget görünüm alanına girdiğinde (ya da butona
-  basıldığında) yüklenir; harita `loading="lazy"`
+- Harita `loading="lazy"` ile yüklenir; sitede üçüncü taraf betiği yoktur
 - `prefers-reduced-motion` tüm animasyonları devre dışı bırakır
 - JavaScript kapalıyken içeriğin görünür kalması için `<noscript>` yedeği vardır
 
@@ -180,7 +179,6 @@ components/
   layout/            header, footer, logo, sticky CTA
   sections/          sayfa bölümleri (hero, hizmetler, süreç, SSS, randevu…)
   blog/              blog kartı, gövde, filtreli liste
-  appointment/       Calendly gömülü + popup entegrasyonu
   graphics/          ikon seti ve hero illüstrasyonu
   ui/                Button, Card, Section, Reveal, JsonLd…
 content/blog/        markdown yazılar

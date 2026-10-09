@@ -61,10 +61,10 @@ export default function OpengraphImage() {
               color: "#1F2937",
             }}
           >
-            Çocuğunuzun ve ailenizin güçlü yarınları için yanınızdayım
+            Kendinizi anlamaya, yaşamınıza yeni bir gözle bakmaya alan açın
           </span>
           <span style={{ marginTop: 26, fontSize: 28, color: "#4B5563" }}>
-            Çocuk · Ergen · Ebeveyn · Aile Danışmanlığı
+            Çocuk · Ergen · Yetişkin · Ebeveyn Danışmanlığı
           </span>
         </div>
 

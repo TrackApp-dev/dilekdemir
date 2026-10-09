@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m } from "framer-motion";
 
-import { CalendarIcon, PhoneIcon } from "@/components/graphics/Icons";
-import { siteConfig } from "@/lib/site";
+import { CalendarIcon, MailIcon, PhoneIcon } from "@/components/graphics/Icons";
+import { hasPhone, siteConfig } from "@/lib/site";
 
 /**
  * Mobilde, kullanıcı sayfada bir miktar ilerledikten sonra beliren ölçülü
@@ -32,13 +32,23 @@ export function StickyCta() {
           className="fixed inset-x-0 bottom-0 z-40 border-t border-sage-200 bg-white/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center gap-3">
-            <a
-              href={`tel:${siteConfig.contact.phoneHref}`}
-              className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-sage-300 text-sage-800 transition-colors hover:bg-sage-100"
-              aria-label="Telefonla ara"
-            >
-              <PhoneIcon className="size-5" />
-            </a>
+            {hasPhone ? (
+              <a
+                href={`tel:${siteConfig.contact.phoneHref}`}
+                className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-sage-300 text-sage-800 transition-colors hover:bg-sage-100"
+                aria-label="Telefonla ara"
+              >
+                <PhoneIcon className="size-5" />
+              </a>
+            ) : (
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-sage-300 text-sage-800 transition-colors hover:bg-sage-100"
+                aria-label="E-posta gönder"
+              >
+                <MailIcon className="size-5" />
+              </a>
+            )}
             <Link
               href="/randevu"
               className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-sage-600 font-semibold text-white shadow-soft transition-colors hover:bg-sage-700"

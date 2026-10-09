@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ShieldIcon } from "@/components/graphics/Icons";
-import { siteConfig } from "@/lib/site";
+import { serviceAreaLabel, siteConfig } from "@/lib/site";
 
 type HeroVisualProps = {
   /**
@@ -45,7 +45,7 @@ export function HeroVisual({ photo }: HeroVisualProps) {
           <div className="min-w-0">
             <p className="text-sm font-semibold text-ink">Gizlilik esaslı çalışma</p>
             <p className="truncate text-xs text-ink-muted">
-              {siteConfig.role} · İstanbul
+              {siteConfig.role} · {serviceAreaLabel}
             </p>
           </div>
         </div>

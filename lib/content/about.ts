@@ -1,69 +1,100 @@
 export const about = {
-  headline: "Her çocuğun anlaşılmaya, her ailenin nefes almaya ihtiyacı var.",
+  headline: "Her bireyin hikâyesi kendine özgü bir anlayışı hak eder.",
   paragraphs: [
-    "İstanbul Üniversitesi-Cerrahpaşa Psikolojik Danışmanlık ve Rehberlik (PDR) programından mezun oldum. Mezuniyetimden bu yana çocuklar, ergenler ve aileler ile çalışıyorum.",
-    "Danışmanlık anlayışımın merkezinde tek bir soru var: Bu davranışın altında hangi ihtiyaç var? Çocuğu “düzeltilmesi gereken” bir problem olarak değil, kendini anlatmaya çalışan bir birey olarak görüyorum. Bu nedenle süreçlerimi yalnızca çocukla değil, ailenin tamamıyla birlikte yürütüyorum.",
-    "Çalışmalarımda bilimsel dayanağı olan yöntemleri esas alıyorum; ancak yöntemden önce ilişkinin geldiğine inanıyorum. Güvenli bir ilişki kurulmadan hiçbir teknik işe yaramaz.",
+    "İstanbul Üniversitesi-Cerrahpaşa Psikolojik Danışmanlık ve Rehberlik (PDR) programından mezun oldum. Çocuk, ergen ve yetişkinlerle psikolojik danışmanlık süreçleri yürütüyor, mesleki gelişimimi Bilişsel Davranışçı Terapi ve Çocuk Merkezli Oyun Terapisi alanlarında aldığım eğitimlerle sürdürüyorum.",
+    "Danışmanlık sürecinde yaşanan güçlükleri yalnızca ortadan kaldırılması gereken sorunlar olarak değil; kişinin düşünceleri, duyguları, davranışları, ihtiyaçları ve yaşam deneyimleriyle birlikte anlaşılması gereken bir bütünün parçası olarak ele alıyorum. Süreci danışanın ihtiyaçları ve hedefleri doğrultusunda iş birliği içinde yapılandırmayı önemsiyorum.",
+    "Çalışmalarımda bilimsel temelli yaklaşımlardan yararlanırken kullanılan yöntem kadar güvenli ve kabul edici bir terapötik ilişkinin de önemli olduğuna inanıyorum. Amacım çocukların, ergenlerin ve yetişkinlerin kendilerini daha iyi anlayabilecekleri, yaşadıkları güçlükleri birlikte ele alabileceğimiz ve yeni baş etme yollarını keşfedebilecekleri güvenli bir alan sunmak.",
   ],
   education: [
     {
       title: "Psikolojik Danışmanlık ve Rehberlik (PDR), Lisans",
       org: "İstanbul Üniversitesi-Cerrahpaşa",
-      period: "",
     },
   ],
-  /** TODO: Sertifika ve eğitimler eklendikçe bu listeyi güncelleyin. */
   trainings: [
-    { title: "Çocuk ve Ergen Danışmanlığı Uygulamaları", org: "" },
-    { title: "Aile Danışmanlığı Yaklaşımları", org: "" },
-    { title: "Oyun Temelli Görüşme Teknikleri", org: "" },
+    { title: "Bilişsel Davranışçı Terapi (BDT)", org: "" },
+    { title: "Çocuk Merkezli Oyun Terapisi", org: "" },
   ],
-  expertise: [
-    "Çocuk danışmanlığı",
-    "Ergen danışmanlığı",
-    "Ebeveyn danışmanlığı",
-    "Aile danışmanlığı",
-    "Okul uyum süreçleri",
-    "Sınav kaygısı",
-    "Duygusal gelişim",
+  /**
+   * Çalışma alanları — tanı odaklı değil, çalışılan konu başlıkları olarak
+   * gruplanmıştır. Ana sayfada yalnızca grup başlıkları, Hakkımda sayfasında
+   * tüm liste gösterilir.
+   */
+  workAreas: [
+    {
+      title: "Çocuklarla Çalışmalar",
+      items: [
+        "Duyguları tanıma ve ifade etme",
+        "Duygu düzenleme becerileri",
+        "Kaygı ve korkular",
+        "Özgüven ve benlik algısı",
+        "Davranışsal güçlükler",
+        "Okula uyum ve okul yaşamında karşılaşılan güçlükler",
+        "Sosyal beceriler ve akran ilişkileri",
+      ],
+    },
+    {
+      title: "Ergenlerle Çalışmalar",
+      items: [
+        "Kaygı ve yoğun endişe",
+        "Sınav kaygısı",
+        "Özgüven ve benlik algısı",
+        "Duygu düzenleme",
+        "Erteleme ve motivasyon güçlükleri",
+        "Akran ve sosyal ilişkiler",
+        "Yaşam değişikliklerine uyum",
+      ],
+    },
+    {
+      title: "Yetişkinlerle Çalışmalar",
+      items: [
+        "Kaygı ve endişeyle baş etme",
+        "Stres ve yaşamın getirdiği zorlanmalar",
+        "Özgüven ve özdeğer",
+        "Duygu düzenleme",
+        "Erteleme ve motivasyon güçlükleri",
+        "Kişilerarası ilişkiler",
+        "Yaşam değişiklikleri ve uyum süreçleri",
+      ],
+    },
   ],
   values: [
     {
-      title: "Gizlilik",
+      title: "Güvenli ve Etik Bir Alan",
       description:
-        "Görüşmelerde paylaşılanlar üçüncü kişilerle paylaşılmaz. Gizliliğin sınırları ilk görüşmede açıkça konuşulur.",
+        "Gizlilik ve mesleki etik ilkeler çerçevesinde güvenli bir görüşme ortamı.",
     },
     {
-      title: "Bilimsellik",
+      title: "Bilimsel Temelli Yaklaşım",
       description:
-        "Yalnızca bilimsel dayanağı olan, yaşa ve gelişim düzeyine uygun yöntemlerle çalışırım.",
+        "Bilimsel dayanağı olan ve bireysel ihtiyaçlara uygun çalışma yöntemleri.",
     },
     {
-      title: "Bütüncül Bakış",
+      title: "Kişiye Özgü Süreç",
       description:
-        "Çocuk; ailesinden, okulundan ve çevresinden bağımsız değerlendirilemez. Süreç bir bütün olarak ele alınır.",
+        "İhtiyaçlarınız ve hedefleriniz doğrultusunda birlikte şekillenen bir süreç.",
     },
     {
-      title: "Şeffaflık",
+      title: "İş Birliğine Dayalı Çalışma",
       description:
-        "Süreç, çerçeve ve beklentiler baştan nettir. Ne yapıldığı ve neden yapıldığı her aşamada paylaşılır.",
+        "Hedeflerin birlikte belirlendiği, aktif katılıma dayalı bir çalışma anlayışı.",
     },
   ],
   approach: [
     {
       title: "İlişki önce gelir",
       description:
-        "Çocuk ya da ergen kendini güvende hissetmeden hiçbir yöntem işlemez. İlk hedef güvenli bir ilişki kurmaktır.",
+        "Güvenli ve kabul edici bir terapötik ilişki kurulmadan hiçbir yöntem tek başına yeterli olmaz.",
     },
     {
-      title: "Aile sürecin parçasıdır",
+      title: "Bütünü birlikte anlamak",
       description:
-        "Kalıcı değişim yalnızca görüşme odasında olmaz; evde de karşılık bulması gerekir. Bu yüzden aile süreç dışında bırakılmaz.",
+        "Yaşanan güçlük; düşünceler, duygular, davranışlar, ihtiyaçlar ve yaşam deneyimleriyle birlikte ele alınır.",
     },
     {
-      title: "Davranış bir mesajdır",
+      title: "Süreç birlikte kurulur",
       description:
-        "Öfke, geri çekilme ya da inatlaşma bir problem değil, karşılanmamış bir ihtiyacın işaretidir.",
+        "Hedefler danışanla birlikte belirlenir; süreç ihtiyaçlar doğrultusunda iş birliği içinde yapılandırılır.",
     },
   ],
 } as const;

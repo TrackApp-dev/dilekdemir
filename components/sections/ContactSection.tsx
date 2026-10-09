@@ -9,32 +9,36 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@/components/graphics/Icons";
-import { siteConfig } from "@/lib/site";
+import { hasPhone, locationLabel, serviceAreaLabel, siteConfig } from "@/lib/site";
 
 export function ContactSection({ tone = "white" }: { tone?: "white" | "default" | "soft" }) {
   const { contact, hoursHuman } = siteConfig;
 
   const channels = [
     {
-      icon: PhoneIcon,
-      label: "Telefon",
-      value: contact.phone,
-      href: `tel:${contact.phoneHref}`,
-      hint: "Görüşme saatleri dışında sesli mesaj bırakabilirsiniz.",
-    },
-    {
       icon: MailIcon,
       label: "E-posta",
       value: contact.email,
       href: `mailto:${contact.email}`,
-      hint: "Genellikle aynı gün içinde yanıt verilir.",
+      hint: "Randevu talepleri ve sorularınız için en hızlı yol.",
     },
+    ...(hasPhone
+      ? [
+          {
+            icon: PhoneIcon,
+            label: "Telefon",
+            value: contact.phone,
+            href: `tel:${contact.phoneHref}`,
+            hint: "Görüşme saatleri dışında sesli mesaj bırakabilirsiniz.",
+          },
+        ]
+      : []),
     {
       icon: MapPinIcon,
-      label: "Ofis",
-      value: `${contact.address.street}, ${contact.address.district} / ${contact.address.city}`,
+      label: "Konum",
+      value: locationLabel,
       href: contact.mapsLink,
-      hint: "Toplu taşımaya yürüme mesafesinde.",
+      hint: `Yüz yüze görüşmeler ${serviceAreaLabel} ilçelerinde; online görüşme de mümkündür.`,
       external: true,
     },
   ];
@@ -44,7 +48,11 @@ export function ContactSection({ tone = "white" }: { tone?: "white" | "default" 
       <SectionHeading
         eyebrow="İletişim"
         title="Bana ulaşın"
-        description="Sorularınız için çekinmeden yazabilir veya arayabilirsiniz. Ulaşmak, bir sürece başlamak anlamına gelmez."
+        description={
+          hasPhone
+            ? "Sorularınız için çekinmeden yazabilir veya arayabilirsiniz. Ulaşmak, bir sürece başlamak anlamına gelmez."
+            : "Sorularınız için çekinmeden yazabilirsiniz. Ulaşmak, bir sürece başlamak anlamına gelmez."
+        }
       />
 
       <div className="mt-14 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -53,9 +61,9 @@ export function ContactSection({ tone = "white" }: { tone?: "white" | "default" 
             <Reveal key={channel.label} delay={index * 0.07}>
               <a
                 href={channel.href}
-                {...(channel.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
+                {..."external" in channel && channel.external
+                  ? { target: "_blank" as const, rel: "noopener noreferrer" }
+                  : {}}
                 className="group flex items-start gap-4 rounded-3xl border border-sage-200/80 bg-white p-6 shadow-soft transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-sage-300 hover:shadow-lift"
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-sage-100 text-sage-700 transition-colors duration-300 group-hover:bg-sage-600 group-hover:text-white">

@@ -52,10 +52,11 @@ export default function PrivacyPage() {
 
       <h2>4. Üçüncü Taraf Hizmetler</h2>
       <p>
-        Randevu oluşturma sürecinde Calendly altyapısı, harita gösteriminde ise
-        Google Haritalar kullanılmaktadır. Bu hizmetleri kullandığınızda ilgili
-        sağlayıcının kendi gizlilik politikaları geçerli olur. Söz konusu bileşenler,
-        yalnızca ihtiyaç duyulduğunda yüklenecek şekilde yapılandırılmıştır.
+        Harita gösteriminde Google Haritalar kullanılmaktadır; bu bileşeni
+        görüntülediğinizde ilgili sağlayıcının kendi gizlilik politikaları
+        geçerli olur. Harita, yalnızca ihtiyaç duyulduğunda yüklenecek şekilde
+        yapılandırılmıştır. Site üzerinde çevrim içi randevu veya form altyapısı
+        bulunmamaktadır; randevu talepleri e-posta yoluyla iletilir.
       </p>
 
       <h2>5. Danışmanlık Gizliliği</h2>

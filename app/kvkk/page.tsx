@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { LegalLayout } from "@/components/sections/LegalLayout";
 import { buildMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
+import { hasPhone, locationLabel, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "KVKK Aydınlatma Metni",
@@ -30,9 +30,8 @@ export default function KvkkPage() {
         aşağıda açıklanan kapsamda işlenmektedir.
       </p>
       <p>
-        İletişim: {siteConfig.contact.email} · {siteConfig.contact.phone} ·{" "}
-        {siteConfig.contact.address.street}, {siteConfig.contact.address.district} /{" "}
-        {siteConfig.contact.address.city}
+        İletişim: {siteConfig.contact.email}
+        {hasPhone ? ` · ${siteConfig.contact.phone}` : ""} · {locationLabel}
       </p>
 
       <h2>2. İşlenen Kişisel Veriler</h2>
@@ -75,8 +74,8 @@ export default function KvkkPage() {
       <h2>5. Aktarım</h2>
       <p>
         Kişisel verileriniz, yalnızca hizmetin sunulması için gerekli olduğu ölçüde
-        ve mevzuatın izin verdiği sınırlar çerçevesinde; randevu altyapısı sağlayıcısı
-        ve barındırma (hosting) hizmet sağlayıcıları gibi tedarikçilere aktarılabilir.
+        ve mevzuatın izin verdiği sınırlar çerçevesinde; barındırma (hosting)
+        ve e-posta hizmet sağlayıcıları gibi tedarikçilere aktarılabilir.
         Yasal olarak talep edilmesi hâlinde yetkili kamu kurum ve kuruluşlarıyla
         paylaşılabilir. Bunun dışında üçüncü kişilerle paylaşılmaz.
       </p>

@@ -7,8 +7,8 @@ import { AnimatePresence, m } from "framer-motion";
 
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
-import { CloseIcon, MenuIcon, PhoneIcon } from "@/components/graphics/Icons";
-import { navigation, siteConfig } from "@/lib/site";
+import { CloseIcon, MailIcon, MenuIcon, PhoneIcon } from "@/components/graphics/Icons";
+import { hasPhone, navigation, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -75,13 +75,15 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`tel:${siteConfig.contact.phoneHref}`}
-            className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-sage-800 xl:inline-flex"
-          >
-            <PhoneIcon className="size-4" />
-            {siteConfig.contact.phone}
-          </a>
+          {hasPhone ? (
+            <a
+              href={`tel:${siteConfig.contact.phoneHref}`}
+              className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-sage-800 xl:inline-flex"
+            >
+              <PhoneIcon className="size-4" />
+              {siteConfig.contact.phone}
+            </a>
+          ) : null}
 
           <Button href="/randevu" size="sm">
             Randevu Al
@@ -133,15 +135,27 @@ export function Header() {
                 <Button href="/randevu" size="lg" onClick={() => setOpen(false)}>
                   Randevu Al
                 </Button>
-                <Button
-                  href={`tel:${siteConfig.contact.phoneHref}`}
-                  variant="secondary"
-                  size="lg"
-                  onClick={() => setOpen(false)}
-                >
-                  <PhoneIcon className="size-4" />
-                  {siteConfig.contact.phone}
-                </Button>
+                {hasPhone ? (
+                  <Button
+                    href={`tel:${siteConfig.contact.phoneHref}`}
+                    variant="secondary"
+                    size="lg"
+                    onClick={() => setOpen(false)}
+                  >
+                    <PhoneIcon className="size-4" />
+                    {siteConfig.contact.phone}
+                  </Button>
+                ) : (
+                  <Button
+                    href={`mailto:${siteConfig.contact.email}`}
+                    variant="secondary"
+                    size="lg"
+                    onClick={() => setOpen(false)}
+                  >
+                    <MailIcon className="size-4" />
+                    E-posta Gönder
+                  </Button>
+                )}
               </div>
             </nav>
           </m.div>

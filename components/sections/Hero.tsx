@@ -3,8 +3,8 @@ import { HeroVisual } from "@/components/graphics/HeroVisual";
 import { ArrowRightIcon, CheckIcon } from "@/components/graphics/Icons";
 
 const highlights = [
-  "İstanbul Üniversitesi-Cerrahpaşa PDR mezunu",
-  "Çocuk, ergen ve aile odaklı çalışma",
+  "Bilişsel Davranışçı Terapi (BDT) odaklı çalışma",
+  "Çocuk Merkezli Oyun Terapisi",
   "Yüz yüze ve online görüşme",
 ];
 
@@ -16,29 +16,30 @@ const highlights = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-sage-50 bg-mesh">
-      <div className="container-page relative grid items-center gap-16 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:py-28">
+      <div className="container-page relative grid items-center gap-16 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20 lg:py-28">
         <div>
           <p className="animate-rise inline-flex items-center gap-2 rounded-full border border-sage-200 bg-white/80 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-sage-700 uppercase">
             <span aria-hidden className="size-1.5 rounded-full bg-sage-400" />
-            Çocuk · Ergen · Aile Danışmanlığı
+            Çocuk · Ergen · Yetişkin · Ebeveyn Danışmanlığı
           </p>
 
-          <h1 className="mt-6 font-display text-[2.15rem] leading-[1.1] font-semibold text-balance sm:text-5xl sm:leading-[1.08] lg:text-[3.4rem]">
-            Çocuğunuzun ve ailenizin{" "}
+          <h1 className="mt-6 font-display text-[2.15rem] leading-[1.14] font-semibold text-balance sm:text-[2.75rem] sm:leading-[1.12] lg:text-[2.9rem]">
+            Kendinizi anlamaya, yaşamınıza{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">güçlü yarınları</span>
+              <span className="relative z-10">yeni bir gözle</span>
               <span
                 aria-hidden
                 className="absolute inset-x-0 -bottom-1 z-0 h-2.5 rounded-full bg-sage-200/80"
               />
             </span>{" "}
-            için yanınızdayım
+            bakmaya alan açın
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-            Çocuk, ergen ve aile danışmanlığı alanında bilimsel temelli ve
-            güvenilir psikolojik destek. Aceleye gerek yok — önce tanışalım,
-            sonra birlikte karar verelim.
+            Çocukların, ergenlerin ve yetişkinlerin yaşamlarında karşılaştıkları
+            güçlükleri anlamlandırabilecekleri; duygularını, düşüncelerini ve
+            ihtiyaçlarını keşfedebilecekleri güvenli bir psikolojik danışmanlık
+            süreci sunuyorum.
           </p>
 
           <div

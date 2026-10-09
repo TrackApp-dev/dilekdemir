@@ -57,17 +57,20 @@ export function AboutPreview() {
               </ul>
 
               <h3 className="mt-8 font-display text-sm font-semibold tracking-[0.12em] text-ink-muted uppercase">
-                Uzmanlık Alanları
+                Çalışma Alanları
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
-                {about.expertise.map((item) => (
+                {about.workAreas.map((group) => (
                   <li
-                    key={item}
+                    key={group.title}
                     className="rounded-full border border-sage-200 bg-sage-50 px-3.5 py-1.5 text-sm text-sage-800"
                   >
-                    {item}
+                    {group.title}
                   </li>
                 ))}
+                <li className="rounded-full border border-sage-200 bg-sage-50 px-3.5 py-1.5 text-sm text-sage-800">
+                  Ebeveyn Görüşmeleri
+                </li>
               </ul>
             </Card>
           </Reveal>

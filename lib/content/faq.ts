@@ -39,7 +39,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Psikolojik danışman, psikolog ve psikiyatrist arasındaki fark nedir?",
     answer:
-      "Psikolojik danışman (PDR mezunu), gelişimsel ve önleyici bir yaklaşımla bireyin uyum, ilişki ve gelişim alanlarında çalışır. Psikiyatristler tıp doktorudur; tanı koyar ve ilaç tedavisi düzenleyebilir. Danışmanlık süreci tıbbi tanı ya da ilaç tedavisi içermez; gerekli görüldüğünde uygun uzmana yönlendirme yapılır.",
+      "Psikolojik danışmanlar, gelişimsel ve önleyici bir yaklaşımla bireyin uyum, ilişki ve gelişim alanlarında çalışır. Psikiyatristler tıp doktorudur; tanı koyar ve ilaç tedavisi düzenleyebilir. Danışmanlık süreci tıbbi tanı ya da ilaç tedavisi içermez; gerekli görüldüğünde uygun uzmana yönlendirme yapılır.",
   },
   {
     question: "Randevumu iptal etmem gerekirse ne yapmalıyım?",

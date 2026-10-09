@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({ params }: Params) {
       />
 
       <PageHero
-        eyebrow={service.audience}
+        eyebrow="Psikolojik Danışmanlık"
         title={service.title}
         description={service.summary}
         breadcrumbs={[
@@ -124,14 +124,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                   ))}
                 </ul>
 
-                <div className="mt-7 rounded-2xl bg-sage-50 p-5">
-                  <p className="text-xs font-semibold tracking-[0.12em] text-ink-muted uppercase">
-                    Kimler için
-                  </p>
-                  <p className="mt-2 font-medium text-ink">{service.audience}</p>
-                </div>
-
-                <Button href="/randevu" className="mt-6 w-full">
+                <Button href="/randevu" className="mt-7 w-full">
                   Randevu Al
                 </Button>
               </Card>

@@ -4,23 +4,27 @@ import { BookIcon, ClockIcon, ShieldIcon, SparkleIcon } from "@/components/graph
 const items = [
   {
     icon: ShieldIcon,
-    title: "Gizlilik esaslı",
-    description: "Görüşmelerde paylaşılanlar üçüncü kişilerle paylaşılmaz.",
+    title: "Güvenli ve Etik Bir Alan",
+    description:
+      "Gizlilik ve mesleki etik ilkeler doğrultusunda yürütülen bir süreç.",
   },
   {
     icon: BookIcon,
-    title: "Bilimsel temelli",
-    description: "Yaşa ve gelişim düzeyine uygun, dayanağı olan yöntemler.",
+    title: "Bilimsel Temelli Yaklaşım",
+    description:
+      "Güncel bilimsel bilgi ve kanıta dayalı yaklaşımlardan yararlanılır.",
   },
   {
     icon: SparkleIcon,
-    title: "Aile odaklı",
-    description: "Çocuk tek başına değil, ailesiyle birlikte ele alınır.",
+    title: "Size Özgü Bir Süreç",
+    description:
+      "İhtiyaçlarınız, deneyimleriniz ve hedefleriniz doğrultusunda birlikte şekillenir.",
   },
   {
     icon: ClockIcon,
-    title: "Şeffaf süreç",
-    description: "Çerçeve, süre ve beklentiler ilk görüşmede nettir.",
+    title: "İş Birliğine Dayalı",
+    description:
+      "Hedeflerin birlikte belirlendiği, açık ve aktif katılıma dayalı bir çalışma süreci.",
   },
 ];
 

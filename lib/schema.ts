@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site";
+import { hasPhone, siteConfig } from "@/lib/site";
 import { services } from "@/lib/content/services";
 import { faqItems } from "@/lib/content/faq";
 import { absoluteUrl } from "@/lib/seo";
@@ -30,12 +30,12 @@ export function personSchema() {
       },
     },
     knowsAbout: [
-      "Çocuk danışmanlığı",
-      "Ergen danışmanlığı",
-      "Ebeveyn danışmanlığı",
-      "Aile danışmanlığı",
-      "Okul uyum süreçleri",
-      "Sınav kaygısı",
+      "Çocuklarla psikolojik danışmanlık",
+      "Ergenlerle psikolojik danışmanlık",
+      "Yetişkinlerle psikolojik danışmanlık",
+      "Ebeveyn görüşmeleri",
+      "Bilişsel Davranışçı Terapi",
+      "Çocuk Merkezli Oyun Terapisi",
     ],
     knowsLanguage: ["tr"],
     sameAs: Object.values(siteConfig.social).filter(Boolean),
@@ -51,17 +51,15 @@ export function localBusinessSchema() {
     name: `${siteConfig.name} — ${siteConfig.role}`,
     description: siteConfig.description,
     url: siteConfig.url,
-    telephone: contact.phone,
+    ...(hasPhone ? { telephone: contact.phone } : {}),
     email: contact.email,
     image: absoluteUrl("/opengraph-image"),
     priceRange: "$$",
     currenciesAccepted: "TRY",
     address: {
       "@type": "PostalAddress",
-      streetAddress: contact.address.street,
       addressLocality: contact.address.district,
       addressRegion: contact.address.city,
-      postalCode: contact.address.postalCode,
       addressCountry: contact.address.country,
     },
     geo: {
@@ -75,7 +73,10 @@ export function localBusinessSchema() {
       opens: h.opens,
       closes: h.closes,
     })),
-    areaServed: { "@type": "City", name: contact.address.city },
+    areaServed: contact.serviceAreas.map((area) => ({
+      "@type": "City",
+      name: area,
+    })),
     founder: { "@id": personId },
     employee: { "@id": personId },
     sameAs: Object.values(siteConfig.social).filter(Boolean),
@@ -160,7 +161,10 @@ export function serviceSchema(slug: string, title: string, description: string) 
     serviceType: title,
     provider: { "@id": businessId },
     areaServed: { "@type": "City", name: siteConfig.contact.address.city },
-    audience: { "@type": "Audience", audienceType: "Çocuklar, ergenler ve aileler" },
+    audience: {
+      "@type": "Audience",
+      audienceType: "Çocuklar, ergenler, yetişkinler ve ebeveynler",
+    },
   };
 }
 

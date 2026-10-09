@@ -33,9 +33,9 @@ export default function CookiePage() {
           Bu çerezler olmadan site düzgün çalışmaz ve devre dışı bırakılamaz.
         </li>
         <li>
-          <strong>Üçüncü taraf çerezleri:</strong> Randevu takvimi (Calendly) ve
-          harita (Google Haritalar) bileşenleri, yalnızca sayfada görüntülendiklerinde
-          ilgili sağlayıcının çerezlerini kullanabilir.
+          <strong>Üçüncü taraf çerezleri:</strong> Harita (Google Haritalar)
+          bileşeni, yalnızca sayfada görüntülendiğinde ilgili sağlayıcının
+          çerezlerini kullanabilir.
         </li>
       </ul>
       <p>

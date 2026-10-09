@@ -12,7 +12,7 @@ import { services } from "@/lib/content/services";
 export const metadata: Metadata = buildMetadata({
   title: "Hizmetler",
   description:
-    "Çocuk danışmanlığı, ergen danışmanlığı, ebeveyn ve aile danışmanlığı, okul uyum süreçleri, sınav kaygısı ve duygusal gelişim destek programı.",
+    "Çocuklarla, ergenlerle ve yetişkinlerle bireysel psikolojik danışmanlık; ebeveyn görüşmeleri. Çalışma alanları ve görüşme sürecine ilişkin ayrıntılar.",
   path: "/hizmetler",
 });
 
@@ -28,8 +28,8 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Hizmetler"
-        title="Çocuk, ergen ve aile için danışmanlık alanları"
-        description="Her başvuru kendine özgüdür. Aşağıdaki başlıklar çalışma alanlarımı gösterir; sizin için hangisinin uygun olduğuna ilk görüşmede birlikte karar veririz."
+        title="Her süreç, kişiye özgü bir yerden başlar."
+        description="Çocuk, ergen ve yetişkinlerle yürüttüğüm psikolojik danışmanlık süreçlerini başvuru nedeni, ihtiyaçlar ve belirlenen hedefler doğrultusunda birlikte şekillendiriyorum. Aşağıda çalışma alanlarımı ve görüşme süreçlerine ilişkin ayrıntıları inceleyebilirsiniz."
         breadcrumbs={[{ name: "Hizmetler", href: "/hizmetler" }]}
       />
 

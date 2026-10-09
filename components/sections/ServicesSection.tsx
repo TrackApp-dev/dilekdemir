@@ -19,13 +19,13 @@ export function ServicesSection({
     <Section id="hizmetler" tone={tone}>
       <SectionHeading
         eyebrow="Hizmetler"
-        title="İhtiyacınıza göre şekillenen danışmanlık alanları"
-        description="Her süreç aynı değildir. Aşağıdaki başlıklar en sık çalıştığım alanlar; sizin için hangisinin uygun olduğuna ilk görüşmede birlikte karar veririz."
+        title="Size uygun psikolojik danışmanlık sürecini keşfedin"
+        description="Her danışmanlık süreci; yaşanan güçlükler, bireysel ihtiyaçlar ve görüşmelerde birlikte belirlenen hedefler doğrultusunda şekillenir."
       />
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2">
         {items.map((service, index) => (
-          <Reveal key={service.slug} delay={(index % 3) * 0.07}>
+          <Reveal key={service.slug} delay={(index % 2) * 0.07}>
             <ServiceCard service={service} className="h-full" />
           </Reveal>
         ))}

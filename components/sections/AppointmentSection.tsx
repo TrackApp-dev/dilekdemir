@@ -3,30 +3,34 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { CalendlyInline } from "@/components/appointment/CalendlyInline";
-import { CalendlyPopupButton } from "@/components/appointment/CalendlyPopupButton";
-import { CheckIcon, ClockIcon, MailIcon, PhoneIcon } from "@/components/graphics/Icons";
-import { siteConfig } from "@/lib/site";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  ClockIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@/components/graphics/Icons";
+import { hasPhone, locationLabel, serviceAreaLabel, siteConfig } from "@/lib/site";
 
 const expectations = [
   "İlk görüşme bir tanışmadır; hemen bir sürece başlamak zorunda değilsiniz.",
-  "Çocuk ve ergen danışmanlığında ilk görüşme genellikle yalnızca ebeveynlerle yapılır.",
+  "Çocuklarla yürütülen süreçlerde ilk görüşme genellikle yalnızca ebeveynlerle yapılır.",
   "Görüşmenin sonunda nasıl ilerleyebileceğimizi birlikte değerlendiririz.",
 ];
 
 export function AppointmentSection() {
-  const { calendly, contact, hoursHuman } = siteConfig;
-  const calendlyReady = calendly.enabled && Boolean(calendly.url);
+  const { contact, hoursHuman } = siteConfig;
 
   return (
     <Section id="randevu" tone="soft">
       <SectionHeading
         eyebrow="Randevu"
-        title="Ön görüşme için uygun bir zaman seçin"
-        description="Randevu almak bir taahhüt değildir. Önce tanışalım, sizi dinleyeyim; devamına birlikte karar veririz."
+        title="Nasıl ilerliyoruz?"
+        description="İlk görüşme öncesinde bilmeniz gerekenler ve randevu talebinizde paylaşmanız yeterli olan bilgiler."
       />
 
-      <div className="mt-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
+      <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
         <div className="space-y-6">
           <Reveal>
             <Card>
@@ -49,6 +53,56 @@ export function AppointmentSection() {
 
           <Reveal delay={0.08}>
             <Card>
+              <h3 className="font-display text-lg font-semibold">
+                Randevu talebinizde paylaşmanız yeterli
+              </h3>
+              <ul className="mt-5 space-y-3.5">
+                {[
+                  "Görüşmenin kimin için planlandığı (çocuk, ergen, yetişkin ya da ebeveyn görüşmesi)",
+                  "Kısaca başvuru nedeniniz",
+                  "Yüz yüze mi, online mı tercih ettiğiniz",
+                  "Size uygun gün ve saat aralıkları",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
+                    <CheckIcon
+                      className="mt-0.5 size-4 shrink-0 text-sage-500"
+                      strokeWidth={2.2}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </Reveal>
+        </div>
+
+        <div className="space-y-6">
+          <Reveal delay={0.1}>
+            <Card tone="accent">
+              <h3 className="font-display text-lg font-semibold text-white">
+                Randevu talebi oluşturun
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-sage-100">
+                Talebinizi ilettikten sonra en kısa sürede size dönüş yapılır.
+              </p>
+              <div className="mt-6 flex flex-col gap-3">
+                <Button href={`mailto:${contact.email}`} variant="white">
+                  <MailIcon className="size-4" />
+                  E-posta Gönder
+                </Button>
+                {hasPhone ? (
+                  <Button href={`tel:${contact.phoneHref}`} variant="onDark">
+                    <PhoneIcon className="size-4" />
+                    {contact.phone}
+                  </Button>
+                ) : null}
+              </div>
+              <p className="mt-5 text-xs break-words text-sage-100/90">{contact.email}</p>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <Card>
               <h3 className="flex items-center gap-2 font-display text-lg font-semibold">
                 <ClockIcon className="size-5 text-sage-500" />
                 Çalışma saatleri
@@ -64,56 +118,18 @@ export function AppointmentSection() {
                   </div>
                 ))}
               </dl>
-            </Card>
-          </Reveal>
 
-          <Reveal delay={0.16}>
-            <Card tone="accent">
-              <h3 className="font-display text-lg font-semibold text-white">
-                Takvimden seçmek yerine konuşmayı mı tercih edersiniz?
-              </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-sage-100">
-                Sorularınızı doğrudan iletmek isterseniz telefon ya da e-posta ile
-                de ulaşabilirsiniz.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button href={`tel:${contact.phoneHref}`} variant="white" size="sm">
-                  <PhoneIcon className="size-4" />
-                  Ara
-                </Button>
-                <Button href={`mailto:${contact.email}`} variant="onDark" size="sm">
-                  <MailIcon className="size-4" />
-                  E-posta Gönder
-                </Button>
+              <div className="mt-6 flex items-start gap-3 rounded-2xl bg-sage-50 p-5">
+                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-sage-500" />
+                <p className="text-sm leading-relaxed text-ink-soft">
+                  Yüz yüze görüşmeler <strong className="font-medium text-ink">{serviceAreaLabel}</strong>{" "}
+                  ilçelerinde yapılmaktadır ({locationLabel}). Online görüşme de
+                  mümkündür.
+                </p>
               </div>
             </Card>
           </Reveal>
         </div>
-
-        <Reveal delay={0.1}>
-          {calendlyReady ? (
-            <CalendlyInline url={calendly.url} />
-          ) : (
-            <Card className="flex h-full min-h-[26rem] flex-col items-center justify-center text-center">
-              <h3 className="font-display text-xl font-semibold">
-                Online randevu takvimi çok yakında
-              </h3>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
-                Şimdilik randevu taleplerinizi telefon veya e-posta ile
-                iletebilirsiniz. En kısa sürede size dönüş yapılır.
-              </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button href={`tel:${contact.phoneHref}`}>
-                  <PhoneIcon className="size-4" />
-                  {contact.phone}
-                </Button>
-                <Button href={`mailto:${contact.email}`} variant="secondary">
-                  E-posta Gönder
-                </Button>
-              </div>
-            </Card>
-          )}
-        </Reveal>
       </div>
     </Section>
   );
@@ -123,9 +139,6 @@ export function AppointmentSection() {
  * Sayfa aralarında kullanılan, baskı hissi yaratmayan yumuşak dönüşüm alanı.
  */
 export function AppointmentCta() {
-  const { calendly } = siteConfig;
-  const calendlyReady = calendly.enabled && Boolean(calendly.url);
-
   return (
     <section className="bg-sage-50">
       <div className="container-page py-16 sm:py-20">
@@ -150,16 +163,11 @@ export function AppointmentCta() {
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button href="/randevu" variant="white" size="lg">
                   Randevu Al
+                  <ArrowRightIcon className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
-                {calendlyReady ? (
-                  <CalendlyPopupButton url={calendly.url} variant="onDark" size="lg">
-                    Takvimi Hızlıca Aç
-                  </CalendlyPopupButton>
-                ) : (
-                  <Button href="/iletisim" variant="onDark" size="lg">
-                    İletişime Geç
-                  </Button>
-                )}
+                <Button href="/iletisim" variant="onDark" size="lg">
+                  İletişime Geç
+                </Button>
               </div>
             </div>
           </div>

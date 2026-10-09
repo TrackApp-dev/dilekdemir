@@ -11,7 +11,7 @@ import { breadcrumbSchema, faqSchema, graph } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: "Randevu Al",
   description:
-    "Çocuk, ergen, ebeveyn ve aile danışmanlığı için ön görüşme randevusu oluşturun. Yüz yüze ve online görüşme seçenekleri mevcuttur.",
+    "Çocuk, ergen, yetişkin ve ebeveyn danışmanlığı için ön görüşme randevusu oluşturun. Gebze ve Tuzla'da yüz yüze, ayrıca online görüşme seçeneği.",
   path: "/randevu",
 });
 
@@ -27,8 +27,8 @@ export default function AppointmentPage() {
 
       <PageHero
         eyebrow="Randevu"
-        title="Bir ön görüşme ile başlayalım"
-        description="Takvimden size uygun bir zaman seçebilir ya da doğrudan iletişime geçebilirsiniz. İlk görüşme, birlikte çalışıp çalışmayacağımıza karar vermeniz içindir."
+        title="Randevu talebi oluşturun"
+        description="Randevu talebinizi e-posta ile iletebilirsiniz. İlk görüşme, birlikte çalışıp çalışmayacağımıza karar vermeniz içindir; bir süreç başlatma taahhüdü anlamına gelmez."
         breadcrumbs={[{ name: "Randevu", href: "/randevu" }]}
       />
 

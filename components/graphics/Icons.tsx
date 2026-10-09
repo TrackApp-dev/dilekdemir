@@ -41,6 +41,14 @@ export const TeenIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const AdultIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="12" cy="8" r="3.4" />
+    <path d="M5.5 20.5v-1a6.5 6.5 0 0 1 13 0v1" />
+    <path d="M12 11.4v3.2" />
+  </Icon>
+);
+
 export const ParentIcon = (p: IconProps) => (
   <Icon {...p}>
     <circle cx="8.5" cy="6.5" r="2.9" />
@@ -50,48 +58,11 @@ export const ParentIcon = (p: IconProps) => (
   </Icon>
 );
 
-export const FamilyIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <circle cx="6.5" cy="8" r="2.4" />
-    <circle cx="17.5" cy="8" r="2.4" />
-    <circle cx="12" cy="12.5" r="2" />
-    <path d="M2.5 19v-.8a4 4 0 0 1 8 0" />
-    <path d="M13.5 18.2a4 4 0 0 1 8 0V19" />
-    <path d="M8.8 21v-.4a3.2 3.2 0 0 1 6.4 0v.4" />
-  </Icon>
-);
-
-export const SchoolIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z" />
-    <path d="M6.5 10v5.2c0 1.8 2.5 3.3 5.5 3.3s5.5-1.5 5.5-3.3V10" />
-    <path d="M21 7.5V13" />
-  </Icon>
-);
-
-export const ExamIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <path d="M8 4H6.8A1.8 1.8 0 0 0 5 5.8v13.4A1.8 1.8 0 0 0 6.8 21h10.4a1.8 1.8 0 0 0 1.8-1.8V5.8A1.8 1.8 0 0 0 17.2 4H16" />
-    <rect x="8" y="2.6" width="8" height="3.2" rx="1.2" />
-    <path d="m9 13.5 2 2 4-4" />
-  </Icon>
-);
-
-export const EmotionIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <path d="M12 20.2s-7.2-4.3-7.2-9.1A4 4 0 0 1 12 8.4a4 4 0 0 1 7.2 2.7c0 1.5-.7 2.9-1.7 4.1" />
-    <path d="M4.8 14.2h2.6l1.3-2.2 1.6 3.6 1.4-2.6" />
-  </Icon>
-);
-
 const serviceIcons: Record<ServiceIconName, (p: IconProps) => React.JSX.Element> = {
   child: ChildIcon,
   teen: TeenIcon,
+  adult: AdultIcon,
   parent: ParentIcon,
-  family: FamilyIcon,
-  school: SchoolIcon,
-  exam: ExamIcon,
-  emotion: EmotionIcon,
 };
 
 export function ServiceIcon({ name, ...props }: { name: ServiceIconName } & IconProps) {

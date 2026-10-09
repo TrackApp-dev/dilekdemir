@@ -15,7 +15,7 @@ import { breadcrumbSchema, graph, personSchema } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: "Hakkımda",
   description:
-    "İstanbul Üniversitesi-Cerrahpaşa PDR mezunu Dilek Demir'in eğitim geçmişi, uzmanlık alanları, danışmanlık yaklaşımı ve mesleki değerleri.",
+    "Psikolojik Danışman Dilek Demir'in eğitim geçmişi, çalışma alanları, danışmanlık yaklaşımı ve mesleki değerleri.",
   path: "/hakkimda",
 });
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="Hakkımda"
         title={about.headline}
-        description="Çocuklarla, ergenlerle ve ailelerle çalışan bir psikolojik danışmanım. Aşağıda mesleki geçmişimi ve çalışma anlayışımı bulabilirsiniz."
+        description="Çocuklarla, ergenlerle ve yetişkinlerle çalışan bir psikolojik danışmanım. Aşağıda mesleki geçmişimi ve çalışma anlayışımı bulabilirsiniz."
         breadcrumbs={[{ name: "Hakkımda", href: "/hakkimda" }]}
       />
 
@@ -111,18 +111,31 @@ export default function AboutPage() {
                 </ul>
 
                 <h2 className="mt-8 font-display text-sm font-semibold tracking-[0.12em] text-ink-muted uppercase">
-                  Uzmanlık Alanları
+                  Çalışma Alanları
                 </h2>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {about.expertise.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-full border border-sage-200 bg-sage-50 px-3.5 py-1.5 text-sm text-sage-800"
-                    >
-                      {item}
-                    </li>
+                <div className="mt-4 space-y-5">
+                  {about.workAreas.map((group) => (
+                    <div key={group.title}>
+                      <h3 className="font-display text-base font-semibold">
+                        {group.title}
+                      </h3>
+                      <ul className="mt-2.5 space-y-2">
+                        {group.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex gap-3 text-sm leading-relaxed text-ink-soft"
+                          >
+                            <span
+                              aria-hidden
+                              className="mt-2 size-1.5 shrink-0 rounded-full bg-sage-400"
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </Card>
             </Reveal>
           </div>

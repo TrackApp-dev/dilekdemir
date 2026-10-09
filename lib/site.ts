@@ -2,19 +2,15 @@
  * Tek kaynak konfigürasyon.
  * Site genelindeki iletişim/kimlik bilgileri yalnızca burada tutulur;
  * SEO metadata, JSON-LD şemaları ve tüm UI bileşenleri buradan beslenir.
- *
- * TODO (yayına almadan önce): telefon, e-posta, adres, sosyal medya ve
- * Calendly bilgilerini gerçek değerlerle güncelleyin.
  */
 
 export const siteConfig = {
   name: "Dilek Demir",
-  /** Ünvan: PDR lisans mezuniyeti esas alınmıştır. */
-  role: "Psikolojik Danışman (PDR)",
+  role: "Psikolojik Danışman",
   shortDescription:
-    "Çocuk, ergen ve aile danışmanlığı alanında bilimsel temelli psikolojik destek.",
+    "Çocuk, ergen, yetişkin ve ebeveyn danışmanlığı alanında bilimsel temelli psikolojik destek.",
   description:
-    "Dilek Demir — İstanbul Üniversitesi-Cerrahpaşa Psikolojik Danışmanlık ve Rehberlik mezunu. Çocuk, ergen, ebeveyn ve aile danışmanlığı alanlarında bilimsel temelli, güvenilir psikolojik destek.",
+    "Dilek Demir — Psikolojik Danışman. Çocuklar, ergenler ve yetişkinlerle Bilişsel Davranışçı Terapi ve Çocuk Merkezli Oyun Terapisi temelli psikolojik danışmanlık; ebeveyn görüşmeleri. Gebze ve Tuzla'da yüz yüze, ayrıca online görüşme.",
 
   url: "https://dilek-demir.com",
   /** Alternatif alan adı (301 yönlendirme için) */
@@ -22,22 +18,27 @@ export const siteConfig = {
   locale: "tr_TR",
 
   contact: {
-    phone: "+90 555 000 00 00", // TODO
-    phoneHref: "+905550000000", // TODO
-    whatsapp: "905550000000", // TODO
-    email: "info@dilek-demir.com", // TODO
+    /**
+     * Telefon numarası henüz paylaşılmadı. Boş bırakıldığı sürece telefonla
+     * ilgili tüm arayüz öğeleri (header bağlantısı, footer satırı, mobil
+     * çubuk butonu, iletişim kartı) otomatik olarak gizlenir ve yerlerini
+     * e-posta alır. Numara eklendiğinde hepsi kendiliğinden görünür olur.
+     */
+    phone: "",
+    phoneHref: "",
+    email: "psk.dan.dilekdemir@gmail.com",
     address: {
-      street: "Örnek Mah. Örnek Cad. No: 00 D: 0", // TODO
-      district: "Kadıköy",
-      city: "İstanbul",
-      postalCode: "34000",
+      district: "Gebze",
+      city: "Kocaeli",
       country: "TR",
     },
+    /** Görüşmelerin yürütüldüğü ilçeler */
+    serviceAreas: ["Gebze", "Tuzla"],
     /** Google Maps embed URL — Maps > Paylaş > Harita yerleştir bağlantısı */
     mapsEmbedUrl:
-      "https://www.google.com/maps?q=Kad%C4%B1k%C3%B6y%2C%20%C4%B0stanbul&output=embed", // TODO
-    mapsLink: "https://maps.google.com/?q=Kadıköy, İstanbul", // TODO
-    geo: { latitude: 40.9903, longitude: 29.0245 }, // TODO
+      "https://www.google.com/maps?q=Gebze%2C%20Kocaeli&output=embed",
+    mapsLink: "https://maps.google.com/?q=Gebze, Kocaeli",
+    geo: { latitude: 40.8029, longitude: 29.4307 },
   },
 
   hours: [
@@ -51,22 +52,21 @@ export const siteConfig = {
   ],
 
   social: {
-    instagram: "https://instagram.com/", // TODO
-    linkedin: "https://linkedin.com/in/", // TODO
-    youtube: "", // opsiyonel
-  },
-
-  /**
-   * Calendly. Boş bırakılırsa randevu bölümü otomatik olarak
-   * telefon/e-posta ile iletişim kartına düşer (graceful fallback).
-   */
-  calendly: {
-    url: "https://calendly.com/dilekdemir/on-gorusme", // TODO
-    enabled: true,
+    instagram: "", // TODO: Instagram adresi eklenecek
+    linkedin: "https://www.linkedin.com/in/dilek-demir-903941230/",
   },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+
+/** Telefon numarası tanımlı mı? (Arayüzde koşullu gösterim için.) */
+export const hasPhone = Boolean(siteConfig.contact.phone);
+
+/** "Gebze / Kocaeli" */
+export const locationLabel = `${siteConfig.contact.address.district} / ${siteConfig.contact.address.city}`;
+
+/** "Gebze, Tuzla" */
+export const serviceAreaLabel = siteConfig.contact.serviceAreas.join(", ");
 
 export const navigation = [
   { label: "Hakkımda", href: "/hakkimda" },

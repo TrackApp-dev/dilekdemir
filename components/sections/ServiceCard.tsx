@@ -24,8 +24,11 @@ export function ServiceCard({ service, className }: { service: Service; classNam
       <h3 className="mt-6 font-display text-xl font-semibold">{service.title}</h3>
       <p className="mt-3 grow text-sm leading-relaxed text-ink-soft">{service.summary}</p>
 
-      <p className="mt-6 inline-flex w-fit rounded-full bg-sage-50 px-3 py-1.5 text-xs font-medium text-sage-700">
-        {service.audience}
+      <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-sage-700">
+        Ayrıntılı bilgi
+        <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+          →
+        </span>
       </p>
     </Link>
   );

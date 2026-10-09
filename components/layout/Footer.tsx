@@ -8,7 +8,14 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@/components/graphics/Icons";
-import { legalNavigation, navigation, siteConfig } from "@/lib/site";
+import {
+  hasPhone,
+  legalNavigation,
+  locationLabel,
+  navigation,
+  serviceAreaLabel,
+  siteConfig,
+} from "@/lib/site";
 import { services } from "@/lib/content/services";
 
 export function Footer() {
@@ -57,7 +64,7 @@ export function Footer() {
           <nav aria-label="Hizmetler" className="lg:col-span-3">
             <FooterTitle>Hizmetler</FooterTitle>
             <ul className="mt-4 space-y-2.5">
-              {services.slice(0, 6).map((service) => (
+              {services.map((service) => (
                 <li key={service.slug}>
                   <FooterLink href={`/hizmetler/${service.slug}`}>
                     {service.title}
@@ -70,15 +77,17 @@ export function Footer() {
           <div className="lg:col-span-3">
             <FooterTitle>İletişim</FooterTitle>
             <ul className="mt-4 space-y-3.5 text-sm">
-              <li>
-                <a
-                  href={`tel:${contact.phoneHref}`}
-                  className="flex items-start gap-3 text-ink-soft transition-colors hover:text-sage-800"
-                >
-                  <PhoneIcon className="mt-0.5 size-4 shrink-0 text-sage-500" />
-                  {contact.phone}
-                </a>
-              </li>
+              {hasPhone ? (
+                <li>
+                  <a
+                    href={`tel:${contact.phoneHref}`}
+                    className="flex items-start gap-3 text-ink-soft transition-colors hover:text-sage-800"
+                  >
+                    <PhoneIcon className="mt-0.5 size-4 shrink-0 text-sage-500" />
+                    {contact.phone}
+                  </a>
+                </li>
+              ) : null}
               <li>
                 <a
                   href={`mailto:${contact.email}`}
@@ -91,9 +100,9 @@ export function Footer() {
               <li className="flex items-start gap-3 text-ink-soft">
                 <MapPinIcon className="mt-0.5 size-4 shrink-0 text-sage-500" />
                 <span>
-                  {contact.address.street}
+                  {locationLabel}
                   <br />
-                  {contact.address.district} / {contact.address.city}
+                  Yüz yüze: {serviceAreaLabel} · Online görüşme
                 </span>
               </li>
             </ul>
